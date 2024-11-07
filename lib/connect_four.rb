@@ -2,8 +2,14 @@
 class ConnectFour
 
   def initialize
-    @board = array.new(42, " ")
+    @board = Array.new(42, " ")
   end
+
+  def turn_count
+    @board.count { |position| position != " " }
+  end
+
+
 
   # turn_count - count number of non-empty spaces
   # player_turn - is the current player who can choose a space i.e .even? O : X
