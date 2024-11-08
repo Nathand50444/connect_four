@@ -17,6 +17,10 @@ class ConnectFour
     index = input_to_index(column)
   end
 
+  def input_to_index(input)
+    input.to_i - 1
+  end
+
   # turn_count - count number of non-empty spaces
   # player_turn - is the current player who can choose a space i.e .even? O : X
   # input_to_index - the player will choose a column from 1-7 which will be converted from 0-6 index
