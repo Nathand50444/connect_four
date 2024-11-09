@@ -105,9 +105,19 @@ describe ConnectFour do
       game = ConnectFour.new
 
       before do
-        game.instance_variable_set(:@board, [" ", " ", " "] ) #42 spaces?
+        game.instance_variable_set(:@board, [ 
+          " ", " ", " ", " ", " ", " ", " ", # Row 1 
+          " ", " ", " ", " ", " ", " ", " ", # Row 2 
+          "X", " ", " ", " ", " ", " ", " ", # Row 3 
+          "X", "O", " ", " ", " ", " ", " ", # Row 4 
+          "X", "O", " ", " ", " ", " ", " ", # Row 5 
+          "X", "O", " ", " ", " ", " ", " "  # Row 6 
+          ])
       end
 
+      it 'returns true and outputs "Player X wins!"' do
+        expect { game.current_player }.to eq("O")
+      end
+    end
   end
-
 end
