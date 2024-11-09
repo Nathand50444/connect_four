@@ -21,15 +21,22 @@ describe ConnectFour do
       game = ConnectFour.new
 
       before do
-        game.instance_variable_set(:@board, [" ", " ", " "] ) #42 spaces?
+        game.instance_variable_set(:@board, [ 
+          " ", " ", " ", " ", " ", " ", " ", # Row 1 
+          " ", " ", " ", " ", " ", " ", " ", # Row 2 
+          " ", " ", " ", " ", " ", " ", " ", # Row 3 
+          " ", " ", " ", " ", " ", " ", " ", # Row 4 
+          " ", " ", " ", " ", " ", " ", " ", # Row 5 
+          "X", "O", "X", "O", " ", " ", " "  # Row 6 
+          ])
       end
 
-      expect(game.turn_count).to eq(0)
+      expect(game.turn_count).to eq(4)
     end
   end
 
   describe '#game_over?' do
-    context 'when four X values are in a row' do
+    context 'when four X values are in a row horizontally' do
       let(:game) { ConnectFour.new }
 
       before do
@@ -38,8 +45,8 @@ describe ConnectFour do
           " ", " ", " ", " ", " ", " ", " ", # Row 2 
           " ", " ", " ", " ", " ", " ", " ", # Row 3 
           " ", " ", " ", " ", " ", " ", " ", # Row 4 
-          " ", " ", " ", " ", " ", " ", " ", # Row 5 
-          "X", "X", "X", "X", " ", " ", " " # Row 6 
+          "O", "O", "O", " ", " ", " ", " ", # Row 5 
+          "X", "X", "X", "X", " ", " ", " "  # Row 6 
           ])
       end
 
@@ -48,7 +55,59 @@ describe ConnectFour do
         expect(game.game_over?).to eq(true)
       end
     end
-    # We need multiple 'game_over' tests 
-    # for diagonal, horizontal and vertical win conditions
   end
+
+  describe '#game_over?' do
+    context 'when four X values are in a row vertically' do
+      let(:game) { ConnectFour.new }
+
+      before do
+        game.instance_variable_set(:@board, [ 
+          " ", " ", " ", " ", " ", " ", " ", # Row 1 
+          " ", " ", " ", " ", " ", " ", " ", # Row 2 
+          "X", " ", " ", " ", " ", " ", " ", # Row 3 
+          "X", "O", " ", " ", " ", " ", " ", # Row 4 
+          "X", "O", " ", " ", " ", " ", " ", # Row 5 
+          "X", "O", " ", " ", " ", " ", " "  # Row 6 
+          ])
+      end
+
+      it 'returns true and outputs "Player X wins!"' do
+        expect { game.game_over? }.to output("Player X wins!\n").to_stdout
+        expect(game.game_over?).to eq(true)
+      end
+    end
+  end
+
+  describe '#game_over?' do
+  context 'when four X values are in a row' do
+    let(:game) { ConnectFour.new }
+
+    before do
+      game.instance_variable_set(:@board, [ 
+        " ", " ", " ", " ", " ", " ", " ", # Row 1 
+        " ", " ", " ", " ", " ", " ", " ", # Row 2 
+        " ", " ", " ", "X", " ", " ", " ", # Row 3 
+        " ", "O", "X", "O", " ", " ", " ", # Row 4 
+        " ", "X", "O", "X", " ", " ", " ", # Row 5 
+        "X", "O", "X", "O", " ", " ", " "  # Row 6 
+        ])
+    end
+
+    it 'returns true and outputs "Player X wins!"' do
+      expect { game.game_over? }.to output("Player X wins!\n").to_stdout
+      expect(game.game_over?).to eq(true)
+    end
+  end
+
+  describe '#current_player' do
+    context 'when the turn_count is even' do
+      game = ConnectFour.new
+
+      before do
+        game.instance_variable_set(:@board, [" ", " ", " "] ) #42 spaces?
+      end
+
+  end
+
 end

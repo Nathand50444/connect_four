@@ -15,6 +15,15 @@ class ConnectFour
     column = gets.strip
     # No we have the player's input we will need to convert it to the index of the chosen column
     index = input_to_index(column)
+    
+  end
+
+  def place_counter(column, token)
+    
+  end
+
+  def current_player
+    turn_count.even? "X" : "O"
   end
 
   def input_to_index(input)
