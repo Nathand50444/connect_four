@@ -23,11 +23,15 @@ class ConnectFour
   end
 
   def current_player
-    turn_count.even? "X" : "O"
+    turn_count.even? ? "X" : "O"
   end
 
   def input_to_index(input)
     input.to_i - 1
+  end
+
+  def valid_move?
+    
   end
 
   # turn_count - count number of non-empty spaces
