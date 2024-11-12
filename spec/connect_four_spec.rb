@@ -16,7 +16,15 @@ describe ConnectFour do
    # end
   end
 
-  describe 'turn_count' do
+  describe '#input_to_index' do
+    it 'returns the index - 1' do
+      game = ConnectFour.new
+
+      expect(game.input_to_index(4)).to eq(3)
+    end
+  end
+
+  describe '#turn_count' do
     it 'returns the number turns performed' do
       game = ConnectFour.new
 
