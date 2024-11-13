@@ -9,13 +9,29 @@ class ConnectFour
     @board.count { |position| position != " " }
   end
 
+  COLUMNS = {
+    1 => [0, 7, 14, 21, 28, 35],
+    2 => [1, 8, 15, 22, 29, 36],
+    3 => [2, 9, 16, 23, 30, 37],
+    4 => [3, 10, 17, 24, 31, 38],
+    5 => [4, 11, 18, 25, 32, 39],
+    6 => [5, 12, 19, 26, 33, 40],
+    7 => [6, 13, 20, 27, 34, 41]
+  }
+
   def turn
-    # turn -to begin the game and continue each turn
-    puts "Choose a column 1-7 to place your counter!"
-    column = gets.strip
-    # No we have the player's input we will need to convert it to the index of the chosen column
-    index = input_to_index(column)
-    
+    loop do
+      # turn -to begin the game and continue each turn
+      puts "Choose a column 1-7 to place your counter!"
+      column = gets.strip
+      # No we have the player's input we will need to convert it to the index of the chosen column
+      index = input_to_index(column)
+      if valid_move?(index)
+        column_move(index)
+      else
+        puts 'Invalid move, please choose a value between 1-7.'
+      end
+    end
   end
 
   def place_counter(column, token)
@@ -30,8 +46,8 @@ class ConnectFour
     input.to_i - 1
   end
 
-  def valid_move?
-    
+  def valid_move?(move)
+    move.between?(1, 7)
   end
 
   # turn_count - count number of non-empty spaces
