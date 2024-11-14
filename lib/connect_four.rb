@@ -46,10 +46,9 @@ class ConnectFour
     input.to_i - 1
   end
 
-  def valid_move?(move)
-    if move.between?(1, 7) && COLUMNS[move].each do |index| { index = " " }
-        break
-      end
+  def valid_move?(move) # Test Complete
+    if COLUMNS[move].each do |index| index = " " end && move.between?(1, 7)
+      return true
     else
       return false
     end
