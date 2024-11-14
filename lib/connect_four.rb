@@ -5,7 +5,7 @@ class ConnectFour
     @board = Array.new(42, " ")
   end
 
-  def turn_count
+  def turn_count # Test Complete
     @board.count { |position| position != " " }
   end
 
@@ -38,16 +38,23 @@ class ConnectFour
     
   end
 
-  def current_player
+  def current_player # Test Complete
     turn_count.even? ? "X" : "O"
   end
 
-  def input_to_index(input)
+  def input_to_index(input) # Test Complete
     input.to_i - 1
   end
 
   def valid_move?(move)
-    move.between?(1, 7)
+    if move.between?(1, 7) && COLUMNS[move].each do |index| { index = " " }
+        break
+      end
+    else
+      return false
+    end
+    # Each do chosen column, iterate through @board spaces and determine
+    # Is there a 'free space' available
   end
 
   # turn_count - count number of non-empty spaces

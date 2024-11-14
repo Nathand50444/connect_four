@@ -3,18 +3,30 @@
 require_relative '../lib/connect_four'
 
 describe ConnectFour do
-  # describe '#valid_move?' do
-  #  it 'returns true for an empty spot' do
-  #    game = ConnectFour.new
-  #    expect(game.valid_move?(0)).to eq(true)
-  #  end
+  describe '#valid_move?' do
+    game = ConnectFour.new
+
+    before do
+      game.instance_variable_set(:@board, [ 
+        " ", " ", " ", " ", " ", " ", " ", # Row 1 
+        " ", " ", " ", " ", " ", " ", " ", # Row 2 
+        " ", " ", " ", " ", " ", " ", " ", # Row 3 
+        " ", " ", " ", " ", " ", " ", " ", # Row 4 
+        " ", " ", " ", " ", " ", " ", " ", # Row 5 
+        "X", "O", "X", "O", " ", " ", " "  # Row 6 
+        ])
+    end  
+
+    it 'returns true for a valid move' do
+      expect(game.valid_move?(1)).to eq(true)
+    end
+  end
 
    # it 'returns false for a taken spot' do
    #   game = ConnectFour.new
    #   game.move("ADD MOVE HERE")
    #   expect(game.valid_move?(0)).to eq(false)
    # end
-  # end
 
   describe '#input_to_index' do
     it 'returns the index - 1' do
