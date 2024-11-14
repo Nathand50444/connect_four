@@ -47,13 +47,10 @@ class ConnectFour
   end
 
   def valid_move?(move) # Test Complete
-    if COLUMNS[move].each do |index| index = " " end && move.between?(1, 7)
-      return true
-    else
-      return false
-    end
+    COLUMNS[move].each do |index| index = " " end && move.between?(1, 7)
     # Each do chosen column, iterate through @board spaces and determine
     # Is there a 'free space' available
+    # AND is the value between 1 - 7 
   end
 
   # turn_count - count number of non-empty spaces
