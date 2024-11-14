@@ -27,7 +27,7 @@ class ConnectFour
       # No we have the player's input we will need to convert it to the index of the chosen column
       index = input_to_index(column)
       if valid_move?(index)
-        column_move(index)
+        place_counter(index, current_player)
       else
         puts 'Invalid move, please choose a value between 1-7.'
       end
@@ -35,7 +35,11 @@ class ConnectFour
   end
 
   def place_counter(column, token)
-    
+    # iterate through the values of the chosen column (in reverse) 
+    # and find the first value that is empty
+    @board[column].reverse_each do |index| index = " "
+    # This needs to be set up so that IF the value iterated is " "
+    # that position becomes the current token and breaks.
   end
 
   def current_player # Test Complete
