@@ -5,7 +5,7 @@ require_relative '../lib/connect_four'
 describe ConnectFour do
 
   describe 'Game Constants' do
-    game = ConnectFour.new
+    
     before do
       stub_const("ConnectFour::COLUMNS", {
         1 => [0, 7, 14, 21, 28, 35],
