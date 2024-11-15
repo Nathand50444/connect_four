@@ -47,27 +47,27 @@ describe ConnectFour do
 
     before do
       game.instance_variable_set(:@board, [ 
-        " ", " ", " ", " ", " ", " ", " ", # Row 1 
-        " ", " ", " ", " ", " ", " ", " ", # Row 2 
-        " ", " ", " ", " ", " ", " ", " ", # Row 3 
-        " ", " ", " ", " ", " ", " ", " ", # Row 4 
-        " ", " ", " ", " ", " ", " ", " ", # Row 5 
-        "X", "O", "X", "O", " ", " ", " "  # Row 6 
+        "O", " ", " ", " ", " ", " ", " ", # Row 1 
+        "X", " ", " ", " ", " ", " ", " ", # Row 2 
+        "O", " ", " ", " ", " ", " ", " ", # Row 3 
+        "X", " ", " ", " ", " ", " ", " ", # Row 4 
+        "O", " ", " ", " ", " ", " ", " ", # Row 5 
+        "X", " ", " ", " ", " ", " ", " "  # Row 6 
         ])
       end
-
+      
     it 'returns false for a taken spot' do
-      expect(game.valid_move?(0)).to eq(false)
+      expect(game.valid_move?(1)).to eq(false)
     end
   end
 
-  describe '#input_to_index' do
-    it 'returns the index - 1' do
-      game = ConnectFour.new
+  # describe '#input_to_index' do
+  #   it 'returns the index - 1' do
+  #     game = ConnectFour.new
 
-      expect(game.input_to_index(4)).to eq(3)
-    end
-  end
+  #     expect(game.input_to_index(4)).to eq(3)
+  #   end
+  # end
 
   describe '#turn_count' do
       game = ConnectFour.new

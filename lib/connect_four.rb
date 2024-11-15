@@ -25,9 +25,8 @@ class ConnectFour
       puts "Choose a column 1-7 to place your counter!"
       column = gets.strip
       # No we have the player's input we will need to convert it to the index of the chosen column
-      index = input_to_index(column)
-      if valid_move?(index)
-        place_counter(index, current_player)
+      if valid_move?(column)
+        place_counter(column, current_player)
       else
         puts 'Invalid move, please choose a value between 1-7.'
       end
@@ -51,9 +50,10 @@ class ConnectFour
     turn_count.even? ? "X" : "O"
   end
 
-  def input_to_index(input) # Test Complete
-    input.to_i - 1
-  end
+  # def input_to_index(input) # Test Complete
+  #   input.to_i - 1
+  #     NOW NOT REQUIRED AS COLUMNS ARE NOT ZERO-INDEXED
+  # end
 
   def valid_move?(move) # Test Complete
     COLUMNS[move].each do |index| index = " " end && move.between?(1, 7)
