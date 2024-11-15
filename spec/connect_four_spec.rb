@@ -3,6 +3,26 @@
 require_relative '../lib/connect_four'
 
 describe ConnectFour do
+
+  describe 'Game Constants' do
+    game = ConnectFour.new
+    before do
+      stub_const("ConnectFour::COLUMNS", {
+        1 => [0, 7, 14, 21, 28, 35],
+        2 => [1, 8, 15, 22, 29, 36],
+        3 => [2, 9, 16, 23, 30, 37],
+        4 => [3, 10, 17, 24, 31, 38],
+        5 => [4, 11, 18, 25, 32, 39],
+        6 => [5, 12, 19, 26, 33, 40],
+        7 => [6, 13, 20, 27, 34, 41]
+      })
+    end
+  
+    it 'uses the stubbed constant in the test' do
+      expect(ConnectFour::COLUMNS[1]).to eq([0, 7, 14, 21, 28, 35])
+    end
+  end
+
   describe '#valid_move?' do
     game = ConnectFour.new
 
@@ -22,11 +42,24 @@ describe ConnectFour do
     end
   end
 
-   # it 'returns false for a taken spot' do
-   #   game = ConnectFour.new
-   #   game.move("ADD MOVE HERE")
-   #   expect(game.valid_move?(0)).to eq(false)
-   # end
+  describe '#valid_move?' do
+    game = ConnectFour.new
+
+    before do
+      game.instance_variable_set(:@board, [ 
+        " ", " ", " ", " ", " ", " ", " ", # Row 1 
+        " ", " ", " ", " ", " ", " ", " ", # Row 2 
+        " ", " ", " ", " ", " ", " ", " ", # Row 3 
+        " ", " ", " ", " ", " ", " ", " ", # Row 4 
+        " ", " ", " ", " ", " ", " ", " ", # Row 5 
+        "X", "O", "X", "O", " ", " ", " "  # Row 6 
+        ])
+      end
+
+    it 'returns false for a taken spot' do
+      expect(game.valid_move?(0)).to eq(false)
+    end
+  end
 
   describe '#input_to_index' do
     it 'returns the index - 1' do

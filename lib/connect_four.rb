@@ -37,7 +37,12 @@ class ConnectFour
   def place_counter(column, token)
     # iterate through the values of the chosen column (in reverse) 
     # and find the first value that is empty
-    @board[column].reverse_each do |index| index = " "
+    COLUMNS[column].reverse_each do |index|
+      if @board[index] == " "
+        @board[index] = token
+        break
+      end
+    end
     # This needs to be set up so that IF the value iterated is " "
     # that position becomes the current token and breaks.
   end
