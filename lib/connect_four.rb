@@ -55,8 +55,9 @@ class ConnectFour
   #     NOW NOT REQUIRED AS COLUMNS ARE NOT ZERO-INDEXED
   # end
 
-  def valid_move?(move) # Test Complete
-    COLUMNS[move].each do |index| index = " " end && move.between?(1, 7)
+  def valid_move?(move)
+    # Ensure the column number is valid and the top-most position in the column is empty
+    move.between?(1, 7) && @board[COLUMNS[move].first] == " "
     # Each do chosen column, iterate through @board spaces and determine
     # Is there a 'free space' available
     # AND is the value between 1 - 7 

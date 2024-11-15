@@ -28,25 +28,6 @@ describe ConnectFour do
 
     before do
       game.instance_variable_set(:@board, [ 
-        " ", " ", " ", " ", " ", " ", " ", # Row 1 
-        " ", " ", " ", " ", " ", " ", " ", # Row 2 
-        " ", " ", " ", " ", " ", " ", " ", # Row 3 
-        " ", " ", " ", " ", " ", " ", " ", # Row 4 
-        " ", " ", " ", " ", " ", " ", " ", # Row 5 
-        "X", "O", "X", "O", " ", " ", " "  # Row 6 
-        ])
-    end  
-
-    it 'returns true for a valid move' do
-      expect(game.valid_move?(1)).to eq(true)
-    end
-  end
-
-  describe '#valid_move?' do
-    game = ConnectFour.new
-
-    before do
-      game.instance_variable_set(:@board, [ 
         "O", " ", " ", " ", " ", " ", " ", # Row 1 
         "X", " ", " ", " ", " ", " ", " ", # Row 2 
         "O", " ", " ", " ", " ", " ", " ", # Row 3 
@@ -56,8 +37,12 @@ describe ConnectFour do
         ])
       end
       
-    it 'returns false for a taken spot' do
+    it 'returns false for a taken column' do
       expect(game.valid_move?(1)).to eq(false)
+    end
+    
+    it 'returns true for a column with empty spots' do
+      expect(game.valid_move?(2)).to eq(true)
     end
   end
 
