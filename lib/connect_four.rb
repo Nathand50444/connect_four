@@ -28,6 +28,8 @@ class ConnectFour
       [8, 16, 24, 32], [9, 17, 25, 33], [2, 10, 18, 26], [3, 11, 19, 27]
     ]
 
+  WINNING_LENGTH = 4
+
   def turn
     loop do
       # turn -to begin the game and continue each turn
@@ -92,7 +94,11 @@ class ConnectFour
   end
 
   def vertical_win(token)
-
+    COLUMNS.each_value do |column|
+      column.each_cons(WINNING_LENGTH) do |sequence|
+        if sequence.all? { |index| @board[index] == "#{token}" }
+      end
+    end
   end
 
   def horizontal_win(token) 
