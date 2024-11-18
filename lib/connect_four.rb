@@ -41,7 +41,7 @@ class ConnectFour
         puts 'Invalid move, please choose a value between 1-7.'
       end
 
-      if game_over?
+      if game_over?(current_player)
         break
       end
 
@@ -78,14 +78,30 @@ class ConnectFour
     # AND is the value between 1 - 7 
   end
 
-  # def game_over?
-  #   if 
+  def game_over?(token)
+    if vertical_win?(token) || horizontal_win?(token) || diagonal_win(token)
+      puts "Congratulations! Token #{token} wins!"
+    end
+  #     iterate over vertical, diagonal and horizontal values for four in a row.
+
   #     when four tokens are in a row the game is over and outputs the winner
+  #     && when the number of turns exceeds 42 || there are no " " values remaining
+
   #     four_in_row? - iterates/checks for four from current point across each of the diagonal, horizontal, vertical spaces
   #     four_in_row, will be triggered by game_over? and will start from each cell to loop and validate
-  #   end
-  # end
+  end
 
+  def vertical_win(token)
+
+  end
+
+  def horizontal_win(token) 
+
+  end
+
+  def diagonal_win(token)
+
+  end
   # turn_count - count number of non-empty spaces
   # player_turn - is the current player who can choose a space i.e .even? O : X
   # input_to_index - the player will choose a column from 1-7 which will be converted from 0-6 index
