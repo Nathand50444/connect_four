@@ -104,21 +104,19 @@ class ConnectFour
   def horizontal_win?(token) 
     @board.each_value do |column|
       column.each_cons(WINNING_LENGTH) do |sequence|
-        if sequence.all? { |index| @board[index] == "#{token}" }
-        end
+        return true if sequence.all? { |index| @board[index] == "#{token}" }
       end
     end
   end
-
 
   def diagonal_win?(token) 
     DIAGONALS.each_value do |column|
       column.each_cons(WINNING_LENGTH) do |sequence|
-        if sequence.all? { |index| @board[index] == "#{token}" }
-        end
+        return true if sequence.all? { |index| @board[index] == "#{token}" }
       end
     end
   end
+
   # turn_count - count number of non-empty spaces
   # player_turn - is the current player who can choose a space i.e .even? O : X
   # input_to_index - the player will choose a column from 1-7 which will be converted from 0-6 index

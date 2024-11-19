@@ -108,27 +108,26 @@ describe ConnectFour do
     end
   end
 
- # describe '#diagonal_win?' do
- #   context 'when four X values are in a row' do
- #     let(:game) { ConnectFour.new }
+ describe '#diagonal_win?' do
+    context 'when four X values are in a row diagonally' do
+      let(:game) { ConnectFour.new }
 
- #     before do
- #       game.instance_variable_set(:@board, [ 
- #         " ", " ", " ", " ", " ", " ", " ", # Row 1 
- #         " ", " ", " ", " ", " ", " ", " ", # Row 2 
- #         " ", " ", " ", "X", " ", " ", " ", # Row 3 
- #         " ", "O", "X", "O", " ", " ", " ", # Row 4 
- #         " ", "X", "O", "X", " ", " ", " ", # Row 5 
- #         "X", "O", "X", "O", " ", " ", " "  # Row 6 
- #         ])
- #     end
+      before do
+        game.instance_variable_set(:@board, [ 
+          " ", " ", " ", " ", " ", " ", " ", # Row 1 
+          " ", " ", " ", " ", " ", " ", " ", # Row 2 
+          " ", " ", " ", "X", " ", " ", " ", # Row 3 
+          " ", "O", "X", "O", " ", " ", " ", # Row 4 
+          " ", "X", "O", "X", " ", " ", " ", # Row 5 
+          "X", "O", "X", "O", " ", " ", " "  # Row 6 
+          ])
+      end
 
- #     it 'returns true and outputs "Player X wins!"' do
- #      expect { game.game_over? }.to output("Congratulations! Token X wins!\n").to_stdout
- #       expect(game.game_over?).to eq(true)
- #     end
- #   end
- # end
+      it 'returns true' do
+        expect(game.diagonal_win?("X")).to eq(true)
+      end
+    end
+  end
 
   describe '#current_player' do
     context 'when the turn count is odd' do
