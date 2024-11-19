@@ -46,14 +46,6 @@ describe ConnectFour do
     end
   end
 
-  # describe '#input_to_index' do
-  #   it 'returns the index - 1' do
-  #     game = ConnectFour.new
-
-  #     expect(game.input_to_index(4)).to eq(3)
-  #   end
-  # end
-
   describe '#turn_count' do
       game = ConnectFour.new
 
@@ -89,35 +81,34 @@ describe ConnectFour do
   #   end
 
   #   it 'returns true and outputs "Player X wins!"' do
-  #     expect { game.game_over? }.to output("Player X wins!\n").to_stdout
+  #     expect { game.game_over? }.to output("Congratulations! Token X wins!\n").to_stdout
   #     expect(game.game_over?).to eq(true)
   #   end
   # end
   # end
 
-  # describe '#game_over?' do
-  # context 'when four X values are in a row vertically' do
-  #   let(:game) { ConnectFour.new }
+  describe '#vertical_win?' do
+    context 'when four X values are in a row vertically' do
+      let(:game) { ConnectFour.new }
 
-  #   before do
-  #     game.instance_variable_set(:@board, [ 
-  #       " ", " ", " ", " ", " ", " ", " ", # Row 1 
-  #       " ", " ", " ", " ", " ", " ", " ", # Row 2 
-  #       "X", " ", " ", " ", " ", " ", " ", # Row 3 
-  #       "X", "O", " ", " ", " ", " ", " ", # Row 4 
-  #       "X", "O", " ", " ", " ", " ", " ", # Row 5 
-  #       "X", "O", " ", " ", " ", " ", " "  # Row 6 
-  #       ])
-  #   end
+      before do
+        game.instance_variable_set(:@board, [ 
+          " ", " ", " ", " ", " ", " ", " ", # Row 1 
+          " ", " ", " ", " ", " ", " ", " ", # Row 2 
+          "X", " ", " ", " ", " ", " ", " ", # Row 3 
+          "X", "O", " ", " ", " ", " ", " ", # Row 4 
+          "X", "O", " ", " ", " ", " ", " ", # Row 5 
+          "X", "O", " ", " ", " ", " ", " "  # Row 6 
+          ])
+      end
 
-  #   it 'returns true and outputs "Player X wins!"' do
-  #     expect { game.game_over? }.to output("Player X wins!\n").to_stdout
-  #     expect(game.game_over?).to eq(true)
-  #   end
-  # end
-  # end
+      it 'returns true' do
+        expect(game.vertical_win?("X")).to eq(true)
+      end
+    end
+  end
 
- # describe '#game_over?' do
+ # describe '#diagonal_win?' do
  #   context 'when four X values are in a row' do
  #     let(:game) { ConnectFour.new }
 
@@ -133,7 +124,7 @@ describe ConnectFour do
  #     end
 
  #     it 'returns true and outputs "Player X wins!"' do
- #      expect { game.game_over? }.to output("Player X wins!\n").to_stdout
+ #      expect { game.game_over? }.to output("Congratulations! Token X wins!\n").to_stdout
  #       expect(game.game_over?).to eq(true)
  #     end
  #   end
@@ -159,4 +150,13 @@ describe ConnectFour do
       end
     end
   end
+
+  # describe '#input_to_index' do
+  #   it 'returns the index - 1' do
+  #     game = ConnectFour.new
+
+  #     expect(game.input_to_index(4)).to eq(3)
+  #   end
+  # end
+
 end

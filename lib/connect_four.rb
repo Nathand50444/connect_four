@@ -72,7 +72,7 @@ class ConnectFour
   #     NOW NOT REQUIRED AS COLUMNS ARE NOT ZERO-INDEXED
   # end
 
-  def valid_move?(move)
+  def valid_move?(move) # Test complete
     # Ensure the column number is valid and the top-most position in the column is empty
     move.between?(1, 7) && @board[COLUMNS[move].first] == " "
     # Each do chosen column, iterate through @board spaces and determine
@@ -81,7 +81,7 @@ class ConnectFour
   end
 
   def game_over?(token)
-    if vertical_win?(token) || horizontal_win?(token) || diagonal_win(token)
+    if vertical_win?(token) || horizontal_win?(token) || diagonal_win?(token)
       puts "Congratulations! Token #{token} wins!"
     end
   #     iterate over vertical, diagonal and horizontal values for four in a row.
@@ -93,20 +93,31 @@ class ConnectFour
   #     four_in_row, will be triggered by game_over? and will start from each cell to loop and validate
   end
 
-  def vertical_win(token)
+  def vertical_win?(token)
     COLUMNS.each_value do |column|
       column.each_cons(WINNING_LENGTH) do |sequence|
-        if sequence.all? { |index| @board[index] == "#{token}" }
+        return true if sequence.all? { |index| @board[index] == "#{token}" }
       end
     end
   end
 
-  def horizontal_win(token) 
-
+  def horizontal_win?(token) 
+    @board.each_value do |column|
+      column.each_cons(WINNING_LENGTH) do |sequence|
+        if sequence.all? { |index| @board[index] == "#{token}" }
+        end
+      end
+    end
   end
 
-  def diagonal_win(token)
 
+  def diagonal_win?(token) 
+    DIAGONALS.each_value do |column|
+      column.each_cons(WINNING_LENGTH) do |sequence|
+        if sequence.all? { |index| @board[index] == "#{token}" }
+        end
+      end
+    end
   end
   # turn_count - count number of non-empty spaces
   # player_turn - is the current player who can choose a space i.e .even? O : X
