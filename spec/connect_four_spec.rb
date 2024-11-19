@@ -65,27 +65,26 @@ describe ConnectFour do
       end
   end
 
-  # describe '#game_over?' do
-  # context 'when four X values are in a row horizontally' do
-  #   let(:game) { ConnectFour.new }
+  describe '#game_over?' do
+    context 'when four X values are in a row horizontally' do
+      let(:game) { ConnectFour.new }
 
-  #   before do
-  #     game.instance_variable_set(:@board, [ 
-  #       " ", " ", " ", " ", " ", " ", " ", # Row 1 
-  #       " ", " ", " ", " ", " ", " ", " ", # Row 2 
-  #       " ", " ", " ", " ", " ", " ", " ", # Row 3 
-  #       " ", " ", " ", " ", " ", " ", " ", # Row 4 
-  #       "O", "O", "O", " ", " ", " ", " ", # Row 5 
-  #       "X", "X", "X", "X", " ", " ", " "  # Row 6 
-  #       ])
-  #   end
+      before do
+        game.instance_variable_set(:@board, [ 
+          " ", " ", " ", " ", " ", " ", " ", # Row 1 
+          " ", " ", " ", " ", " ", " ", " ", # Row 2 
+          " ", " ", " ", " ", " ", " ", " ", # Row 3 
+          " ", " ", " ", " ", " ", " ", " ", # Row 4 
+          "O", "O", "O", " ", " ", " ", " ", # Row 5 
+          "X", "X", "X", "X", " ", " ", " "  # Row 6 
+          ])
+      end
 
-  #   it 'returns true and outputs "Player X wins!"' do
-  #     expect { game.game_over? }.to output("Congratulations! Token X wins!\n").to_stdout
-  #     expect(game.game_over?).to eq(true)
-  #   end
-  # end
-  # end
+      it 'returns true' do
+        expect(game.horizontal_win?("X")).to eq(true)
+      end
+    end
+  end
 
   describe '#vertical_win?' do
     context 'when four X values are in a row vertically' do

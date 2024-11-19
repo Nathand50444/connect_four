@@ -102,8 +102,8 @@ class ConnectFour
   end
 
   def horizontal_win?(token) 
-    @board.each_value do |column|
-      column.each_cons(WINNING_LENGTH) do |sequence|
+    @board[0..35].each_slice(7) do |row|
+      row.each_cons(WINNING_LENGTH) do |sequence|
         return true if sequence.all? { |index| @board[index] == "#{token}" }
       end
     end
