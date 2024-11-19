@@ -110,8 +110,8 @@ class ConnectFour
   end
 
   def diagonal_win?(token) 
-    DIAGONALS.each_value do |column|
-      column.each_cons(WINNING_LENGTH) do |sequence|
+    DIAGONALS.each do |line|
+      line.each_cons(WINNING_LENGTH) do |sequence|
         return true if sequence.all? { |index| @board[index] == "#{token}" }
       end
     end
