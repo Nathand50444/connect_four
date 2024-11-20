@@ -65,7 +65,7 @@ describe ConnectFour do
       end
   end
 
-  describe '#game_over?' do
+  describe '#horizontal_win?' do
     context 'when four X values are in a row horizontally' do
       let(:game) { ConnectFour.new }
 
@@ -148,6 +148,28 @@ describe ConnectFour do
       end
     end
   end
+
+  describe '#game_over' do
+  context 'when any win condition is met' do
+    let(:game) { ConnectFour.new }
+
+    before do
+      game.instance_variable_set(:@board, [ 
+        " ", " ", " ", " ", " ", " ", " ", # Row 1 
+        " ", " ", " ", " ", " ", " ", " ", # Row 2 
+        " ", " ", " ", "X", " ", " ", " ", # Row 3 
+        " ", "O", "X", "O", " ", " ", " ", # Row 4 
+        " ", "X", "O", "X", " ", " ", " ", # Row 5 
+        "X", "O", "X", "O", " ", " ", " "  # Row 6 
+        ])
+    end
+
+    it 'returns true and puts "Congratulations! Token X wins!"' do
+      expect { game.game_over?("X") }.to output("Congratulations! Token X wins!\n").to_stdout
+      expect(game.game_over?("X")).to eq(true)
+    end
+  end
+end
 
   # describe '#input_to_index' do
   #   it 'returns the index - 1' do
