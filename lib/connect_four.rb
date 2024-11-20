@@ -83,6 +83,7 @@ class ConnectFour
   def game_over?(token)
     if vertical_win?(token) || horizontal_win?(token) || diagonal_win?(token)
       puts "Congratulations! Token #{token} wins!"
+      return true
     end
   #     iterate over vertical, diagonal and horizontal values for four in a row.
 
@@ -102,11 +103,12 @@ class ConnectFour
   end
 
   def horizontal_win?(token) 
-    @board[0..35].each_slice(7) do |row|
+    (0..42).each_slice(7) do |row|
       row.each_cons(WINNING_LENGTH) do |sequence|
         return true if sequence.all? { |index| @board[index] == "#{token}" }
       end
     end
+    false
   end
 
   def diagonal_win?(token) 
