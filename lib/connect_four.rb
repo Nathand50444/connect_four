@@ -9,16 +9,16 @@ class ConnectFour
     @board.count { |position| position != " " }
   end
 
-  # def display_board
-  #   puts " 1  2  3  4  5  6  7"
-  #   puts "-" * 29
+  def display_board
+    puts " 1   2   3   4   5   6   7"
+    puts "-" * 29
 
-  #   (0..42).step(7).reverse_each do |row_start|
-  #     row = @board[row_start, 7]
-  #     puts row.map { |cell| cell.empty? " " : cell }
-  #     puts "-" * 29
-  #   end
-  # end
+    (0..42).step(7) do |row_start|
+      row = @board[row_start, 7]
+      puts row.map { |cell| cell == " " ? " " : cell }.join(" | ")
+      puts "-" * 29
+    end
+  end
 
   COLUMNS = { # Test Complete
     1 => [0, 7, 14, 21, 28, 35],
@@ -45,11 +45,12 @@ class ConnectFour
     loop do
       # turn -to begin the game and continue each turn
       puts "Choose a column 1-7 to place your counter!"
-      column = gets.strip
+      column = gets.strip.to_i
       # No we have the player's input we will need to convert it to the index of the chosen column
       if valid_move?(column)
         place_counter(column, current_player)
         turn_count
+        display_board
       else
         puts 'Invalid move, please choose a value between 1-7.'
       end

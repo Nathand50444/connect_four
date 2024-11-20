@@ -40,6 +40,10 @@ describe ConnectFour do
     it 'returns false for a taken column' do
       expect(game.valid_move?(1)).to eq(false)
     end
+
+    it 'returns false for value not between 1-7' do
+      expect(game.valid_move?(0)).to eq(false)
+    end
     
     it 'returns true for a column with empty spots' do
       expect(game.valid_move?(2)).to eq(true)
