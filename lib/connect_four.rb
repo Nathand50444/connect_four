@@ -9,6 +9,17 @@ class ConnectFour
     @board.count { |position| position != " " }
   end
 
+  # def display_board
+  #   puts " 1  2  3  4  5  6  7"
+  #   puts "-" * 29
+
+  #   (0..42).step(7).reverse_each do |row_start|
+  #     row = @board[row_start, 7]
+  #     puts row.map { |cell| cell.empty? " " : cell }
+  #     puts "-" * 29
+  #   end
+  # end
+
   COLUMNS = { # Test Complete
     1 => [0, 7, 14, 21, 28, 35],
     2 => [1, 8, 15, 22, 29, 36],
