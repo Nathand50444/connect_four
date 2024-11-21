@@ -1,4 +1,3 @@
-
 class ConnectFour
 
   def initialize
@@ -49,14 +48,13 @@ class ConnectFour
       # No we have the player's input we will need to convert it to the index of the chosen column
       if valid_move?(column)
         place_counter(column, current_player)
-        turn_count
         display_board
+        if game_over?(current_player)
+          break
+        end
+        turn_count
       else
         puts 'Invalid move, please choose a value between 1-7.'
-      end
-
-      if game_over?(current_player)
-        break
       end
 
     end
@@ -96,6 +94,8 @@ class ConnectFour
     if vertical_win?(token) || horizontal_win?(token) || diagonal_win?(token)
       puts "Congratulations! Token #{token} wins!"
       return true
+    else
+      return false
     end
   #     iterate over vertical, diagonal and horizontal values for four in a row.
 
@@ -106,7 +106,7 @@ class ConnectFour
   #     four_in_row, will be triggered by game_over? and will start from each cell to loop and validate
   end
 
-  def vertical_win?(token)
+  def vertical_win?(token) # Problem to debug
     COLUMNS.each_value do |column|
       column.each_cons(WINNING_LENGTH) do |sequence|
         return true if sequence.all? { |index| @board[index] == "#{token}" }
@@ -114,7 +114,7 @@ class ConnectFour
     end
   end
 
-  def horizontal_win?(token) 
+  def horizontal_win?(token) # Problem to debug (Will return false, but check)
     (0..42).each_slice(7) do |row|
       row.each_cons(WINNING_LENGTH) do |sequence|
         return true if sequence.all? { |index| @board[index] == "#{token}" }
@@ -123,7 +123,7 @@ class ConnectFour
     false
   end
 
-  def diagonal_win?(token) 
+  def diagonal_win?(token) # Problem to debug
     DIAGONALS.each do |line|
       line.each_cons(WINNING_LENGTH) do |sequence|
         return true if sequence.all? { |index| @board[index] == "#{token}" }
