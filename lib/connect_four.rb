@@ -49,7 +49,12 @@ class ConnectFour
       if valid_move?(column)
         place_counter(column, current_player)
         display_board
+        
         if game_over?(current_player)
+          puts "Congratulations! Token #{current_player} wins!"
+          break
+        elsif turn_count == 42
+          puts "It's a draw! Game over."
           break
         end
         turn_count
@@ -92,10 +97,7 @@ class ConnectFour
 
   def game_over?(token)
     if vertical_win?(token) || horizontal_win?(token) || diagonal_win?(token)
-      puts "Congratulations! Token #{token} wins!"
       return true
-    else
-      return false
     end
   #     iterate over vertical, diagonal and horizontal values for four in a row.
 

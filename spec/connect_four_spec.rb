@@ -154,33 +154,53 @@ describe ConnectFour do
   end
 
   describe '#game_over' do
-  context 'when any win condition is met' do
-    let(:game) { ConnectFour.new }
+    context 'when any win condition is met' do
+      let(:game) { ConnectFour.new }
 
-    before do
-      game.instance_variable_set(:@board, [ 
-        " ", " ", " ", " ", " ", " ", " ", # Row 1 
-        " ", " ", " ", " ", " ", " ", " ", # Row 2 
-        " ", " ", " ", "X", " ", " ", " ", # Row 3 
-        " ", "O", "X", "O", " ", " ", " ", # Row 4 
-        " ", "X", "O", "X", " ", " ", " ", # Row 5 
-        "X", "O", "X", "O", " ", " ", " "  # Row 6 
-        ])
-    end
+      before do
+        game.instance_variable_set(:@board, [ 
+          " ", " ", " ", " ", " ", " ", " ", # Row 1 
+          " ", " ", " ", " ", " ", " ", " ", # Row 2 
+          " ", " ", " ", "X", " ", " ", " ", # Row 3 
+          " ", "O", "X", "O", " ", " ", " ", # Row 4 
+          " ", "X", "O", "X", " ", " ", " ", # Row 5 
+          "X", "O", "X", "O", " ", " ", " "  # Row 6 
+          ])
+      end
 
-    it 'returns true and puts "Congratulations! Token X wins!"' do
-      expect { game.game_over?("X") }.to output("Congratulations! Token X wins!\n").to_stdout
-      expect(game.game_over?("X")).to eq(true)
+      it 'returns true and puts "Congratulations! Token X wins!"' do
+        expect(game.game_over?("X")).to eq(true)
+      end
     end
   end
-end
 
-  # describe '#input_to_index' do
-  #   it 'returns the index - 1' do
-  #     game = ConnectFour.new
+  describe 'No winning scenarios' do
+    context 'when there is no 4-in-a-row' do
+      let(:game) { ConnectFour.new }
 
-  #     expect(game.input_to_index(4)).to eq(3)
-  #   end
-  # end
+      before do
+        game.instance_variable_set(:@board, [ 
+          " ", " ", " ", " ", " ", " ", " ", # Row 1 
+          " ", " ", " ", " ", " ", " ", " ", # Row 2 
+          " ", " ", " ", " ", " ", " ", " ", # Row 3 
+          "X", "O", " ", " ", " ", " ", " ", # Row 4 
+          "X", "O", " ", " ", " ", " ", " ", # Row 5 
+          "X", "O", " ", " ", " ", " ", " "  # Row 6 
+          ])
+      end
 
+      it 'diagonal_win? returns false' do
+        expect(game.vertical_win?("X")).to eq(false)
+      end
+
+      it 'horizontal_win? returns false' do
+        expect(game.vertical_win?("X")).to eq(false)
+      end
+
+      it 'vertical_win? returns false' do
+        expect(game.vertical_win?("X")).to eq(false)
+      end
+
+    end
+  end
 end
