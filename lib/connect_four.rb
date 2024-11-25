@@ -114,6 +114,7 @@ class ConnectFour
         return true if sequence.all? { |index| @board[index] == "#{token}" }
       end
     end
+    false
   end
 
   def horizontal_win?(token) # Problem to debug (Will return false, but check)
@@ -131,6 +132,7 @@ class ConnectFour
         return true if sequence.all? { |index| @board[index] == "#{token}" }
       end
     end
+    false
   end
 
   # turn_count - count number of non-empty spaces
