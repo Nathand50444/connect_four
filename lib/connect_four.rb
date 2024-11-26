@@ -110,7 +110,7 @@ class ConnectFour
   #     four_in_row, will be triggered by game_over? and will start from each cell to loop and validate
   end
 
-  def vertical_win?(token) # Problem to debug
+  def vertical_win?(token) # Test complete
     COLUMNS.each_value do |column|
       column.each_cons(WINNING_LENGTH) do |sequence|
         return true if sequence.all? { |index| @board[index] == "#{token}" }
@@ -119,7 +119,7 @@ class ConnectFour
     false
   end
 
-  def horizontal_win?(token) # Problem to debug (Will return false, but check)
+  def horizontal_win?(token) # Test complete
     (0..42).each_slice(7) do |row|
       row.each_cons(WINNING_LENGTH) do |sequence|
         return true if sequence.all? { |index| @board[index] == "#{token}" }
@@ -128,7 +128,7 @@ class ConnectFour
     false
   end
 
-  def diagonal_win?(token) # Problem to debug
+  def diagonal_win?(token) # Test complete
     DIAGONALS.each do |line|
       line.each_cons(WINNING_LENGTH) do |sequence|
         return true if sequence.all? { |index| @board[index] == "#{token}" }
@@ -136,12 +136,4 @@ class ConnectFour
     end
     false
   end
-
-  # turn_count - count number of non-empty spaces
-  # player_turn - is the current player who can choose a space i.e .even? O : X
-  # input_to_index - the player will choose a column from 1-7 which will be converted from 0-6 index
-  # column_free_space - as the token is 'dropped' into the column, it will find that last free space.
-
-  # Maybe we need to organise the @board by column, so 'array' columns within another array @board
-
 end
