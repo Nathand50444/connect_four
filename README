@@ -1,0 +1,56 @@
+# Connect Four in Ruby
+
+This is a command-line implementation of the classic **Connect Four** game, built in Ruby. Two players take turns dropping their tokens into one of seven columns, aiming to align four tokens vertically, horizontally, or diagonally to win the game.
+
+---
+
+## Features
+
+- **Two-Player gameplay**: Players "X" and "O" take alternating turns.
+- **Win Conditions**: Checks for vertical, horizontal, and diagonal wins.
+- **Dynamic Board Display**: Updates the board in real time after each move.
+- **Draw Detection**: Declares a draw if all spaces are filled without a winner.
+- **Input Validation**: Ensures players select valid moves.
+
+---
+
+## How to Play
+
+1. Clone the repository to your local machine.
+
+2. cd into the connect_four repository.
+
+3. Input these commands into the terminal:
+
+   irb
+   require './lib/connect_four.rb'
+   game = ConnectFour.new
+   game.turn
+
+---
+
+## Rules
+
+- Players alternate turns, with "X" going first.
+- On each turn, a player chooses a column (1-7) to drop their token.
+- The token will occupy the lowest available space in the chosen column.
+- The first player to align four tokens vertically, horizontally, or diagonally wins.
+- If all 42 spaces are filled without a winner, the game ends in a draw.
+
+---
+
+## Code Overview
+
+### Key Methods
+
+- **turn**: Handles player turns, validates moves, and checks for game-ending conditions.
+- **place_counter(column, token)**: Places the player's token in the lowest available position of the chosen column.
+- **valid_move?(column)**: Validates if a column is within range and has available space.
+- **game_over?(token)**: Checks for win conditions (vertical, horizontal, diagonal).
+- **display_board**: Prints the current state of the game board.
+
+### Constants
+
+- **COLUMNS**: Maps each column to its corresponding indices in the board array.
+- **DIAGONALS**: Defines all possible diagonal win paths.
+- **WINNING_LENGTH**: Sets the required length (4) for a winning sequence.
