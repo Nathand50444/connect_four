@@ -132,26 +132,26 @@ describe ConnectFour do
     end
   end
 
-  describe '#current_player' do
-    context 'when the turn count is odd' do
-      let(:game) { ConnectFour.new }
+  # describe '#current_player' do
+  #   context 'when the turn count is odd' do
+  #     let(:game) { ConnectFour.new }
 
-      before do
-        game.instance_variable_set(:@board, [ 
-          " ", " ", " ", " ", " ", " ", " ", # Row 1 
-          " ", " ", " ", " ", " ", " ", " ", # Row 2 
-          "X", " ", " ", " ", " ", " ", " ", # Row 3 
-          "X", "O", " ", " ", " ", " ", " ", # Row 4 
-          "X", "O", " ", " ", " ", " ", " ", # Row 5 
-          "X", "O", " ", " ", " ", " ", " "  # Row 6 
-          ])
-      end
+  #     before do
+  #       game.instance_variable_set(:@board, [ 
+  #         " ", " ", " ", " ", " ", " ", " ", # Row 1 
+  #         " ", " ", " ", " ", " ", " ", " ", # Row 2 
+  #         "X", " ", " ", " ", " ", " ", " ", # Row 3 
+  #         "X", "O", " ", " ", " ", " ", " ", # Row 4 
+  #         "X", "O", " ", " ", " ", " ", " ", # Row 5 
+  #         "X", "O", " ", " ", " ", " ", " "  # Row 6 
+  #         ])
+  #     end
 
-      it 'returns player "O" is the current player' do
-        expect(game.current_player).to eq("O")
-      end
-    end
-  end
+  #     it 'returns player "O" is the current player' do
+  #       expect(game.current_player).to eq("O")
+  #     end
+  #   end
+  # end
 
   describe '#game_over' do
     context 'when any win condition is met' do

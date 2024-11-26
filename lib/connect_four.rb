@@ -2,6 +2,7 @@ class ConnectFour
 
   def initialize
     @board = Array.new(42, " ")
+    @current_player = "X"
   end
 
   def turn_count # Test Complete
@@ -47,17 +48,18 @@ class ConnectFour
       column = gets.strip.to_i
       # No we have the player's input we will need to convert it to the index of the chosen column
       if valid_move?(column)
-        place_counter(column, current_player)
+        place_counter(column, @current_player)
         display_board
         
-        if game_over?(current_player)
-          puts "Congratulations! Token #{current_player} wins!"
+        if game_over?(@current_player)
+          puts "Congratulations! Token #{@current_player} wins!"
           break
         elsif turn_count == 42
           puts "It's a draw! Game over."
           break
         end
         turn_count
+        @current_player = @current_player == "X" ? "O" : "X"
       else
         puts 'Invalid move, please choose a value between 1-7.'
       end
@@ -78,9 +80,9 @@ class ConnectFour
     # that position becomes the current token and breaks.
   end
 
-  def current_player # Test Complete
-    turn_count.even? ? "X" : "O"
-  end
+  # def current_player # Test Complete
+  #   turn_count.even? ? "X" : "O"
+  # end
 
   # def input_to_index(input) # Test Complete
   #   input.to_i - 1
